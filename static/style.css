@@ -1,0 +1,57 @@
+body {
+    background-color: #e1e5e6;
+    font-family: sans-serif;
+    text-align: left;
+    margin: 50px;
+    padding-top: 10px;
+}
+
+
+div {
+    background-color: #e1e5e6;
+    font-family: sans-serif;
+    border: 2px solid black;
+    width: auto;
+    height: auto;            /* ИСПРАВЛЕНО: блок будет автоматически растягиваться под картинку и текст */
+    box-sizing: border-box;  /* ДОБАВЛЕНО: чтобы рамка 20px не увеличивала общую ширину блока */
+    padding: 10px;           /* ДОБАВЛЕНО: внутренний отступ, чтобы текст не прилипал к рамке */
+    margin-bottom: 20px;
+}
+
+/* 1. СТИЛИ ДЛЯ ГЛАВНОГО БАННЕРА */
+.home-hero {
+    /* Переопределяем глобальные настройки div для этого баннера */
+    border: none;
+    padding: 0;
+    margin-bottom: 30px;
+
+    /* Настройки фонового изображения */
+    background-size: cover;/*пропорционально растягиваем фоновое изображение чтобы оно полностью заполняло весь элемент*/
+    background-position: center;/*центрируем*/
+    background-repeat: no-repeat;/*не повторяем картинку*/
+
+    /* Размеры баннера */
+    /* Центрируем текст внутри баннера по вертикали и горизонтали */
+    display: flex; /*гибко подстраимаем все эл. контейнера под размер контейнера (по шаблону Flexbox)*/
+    justify-content: center; /*выравнивает элементы по главной оси (по горизонтали)*/
+    align-items: center; /*выравнивает элементы по поперечной оси (по вертикали)*/
+
+    position: relative;/* позиционируем чтобы внутренние элементы к которым применяется затемнение, были внутри блока */
+    box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.4); /*внутреннюяя тень (inset), которая играет роль затемняющего фильтра.*/
+}
+
+.hero-title {
+    color: white;
+    font-size: 3.5rem;
+    font-family: sans-serif;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7); /* Тень*/
+    margin: 0;
+}
+
+/* кнопки Edit & Cancel в одну строку*/
+.button-container {
+    display: flex; /* Выстраивает кнопки в одну строку */
+    gap: 10px;     /* Расстояние между формами */
+    align-items: flex-end;/* выравнивает кнопку Cancel по нижнему краю формы */
+     border: 0px;
+}

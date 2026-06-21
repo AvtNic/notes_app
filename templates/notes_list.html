@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %} NotesList {% endblock %}
+
+{% block content %}
+<div>
+     <h3> Notes list </h3>
+<!--    <a href="{{ url_for('note_new') }}"> Add new note </a> -->
+
+    {% with messages = get_flashed_messages() %}
+        {% for m in messages %}
+            <p style="color: green;">{{ m }}</p>
+        {% endfor %}
+    {% endwith %}
+
+    <ul>
+        {% for note in notes %}
+            <li>
+               {{ note.date_created }}     <a href="{{ url_for('note_detail', id=note.id) }}">{{ note.title }}</a>
+                    {{ note.content }}
+            </li>
+        {% endfor %}
+    </ul>
+    <br>
+
+    <div class="button-container">
+        <form method="POST" action="{{ url_for('note_new') }}">
+            <button>Add note</button>
+        </form>
+
+    </div>
+
+</div>
+<br>
+<a href='/'> back </a>
+{% endblock %}

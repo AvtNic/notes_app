@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {% if note %}Edit note{% else %}New note{% endif %}
+{% endblock %}
+
+{% block content %}
+<div>
+     <h3>{% if note %}Edit note{% else %}New note{% endif %}</h3>
+
+    {% with messages = get_flashed_messages() %}
+        {% for m in messages %}
+            <p style="color: red;">{{ m }}</p>
+        {% endfor %}
+    {% endwith %}
+
+    <form method="POST" id="note-form">
+        <p><input type="text" name="title" placeholder="title note"
+            value="{{ note.title if note else '' }}" required></p>
+        <p><input type="text" name="content" placeholder="content"
+            value="{{ note.content if note else '' }}"></p>
+        <p><input type="datetime-local" name="date_created" placeholder="date"
+            value="{{ note.date_created if note else current_time }}"></p>
+    </form>
+
+    <!-- Контейнер со свойствами flex, где лежат только кнопки -->
+    <div class="button-container">
+
+        <!-- Кнопка Save отправляет форму note-form удаленно -->
+        <button type="submit" form="note-form">Save</button>
+
+        <!-- Кнопка Cancel в своей отдельной форме -->
+        <form method="GET" action="{{ url_for('notes_list') }}">
+            <button type="submit">Cancel</button>
+        </form>
+
+    </div>
+</div>
+<br>
+<a href='/'> back </a>
+{% endblock %}

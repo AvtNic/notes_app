@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} {% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="{% block body_class %}{% endblock %}">
+
+    <nav>
+         <a href="/"> home </a>
+         <a href="/notes"> notes </a>
+         <a href="/about"> about </a>
+
+    </nav>
+<hr>
+    <div class="home-hero" style="background-image: url('{{ url_for('static', filename='img_home11.jpg') }}');">
+    <h1 class="hero-title">My Notes</h1>
+    </div>
+    {% block content %} Контент {% endblock %}
+    <footer> TechNicA_VT, ITStep, 2026 </footer>
+</body>
+</html>
